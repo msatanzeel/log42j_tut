@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Appenders>
-        <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-        </Console>
+        <RollingFile name="RollingFile" fileName="logs/app.log"
+                     filePattern="logs/myapp-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
     </Appenders>
-
     <Loggers>
         <Root level="trace">
-            <AppenderRef ref="console" />
+            <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>
 </Configuration>
