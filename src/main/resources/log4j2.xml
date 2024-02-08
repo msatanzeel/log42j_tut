@@ -3,7 +3,7 @@
     <Appenders>
         <RollingFile name="RollingFile" fileName="logs/app.log"
                      filePattern="logs/myapp-%d{MM-dd-yyyy}-%i.log.gz">
-            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d [%t] %-5level %logger{36}:%L - %msg%n"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="5 MB"/>
             </Policies>
